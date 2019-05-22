@@ -1,0 +1,18 @@
+{
+  "port": 8085,
+  "protocol": "http",
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "body": "The time is ${TIME}"
+          },
+          "_behaviors": {
+			  "decorate": "<%- stringify(filename, './test/behaviors.ejs') %>"
+          }
+        }
+      ]
+    }
+  ]
+}

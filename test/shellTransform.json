@@ -1,0 +1,14 @@
+{
+	"port": 8086,
+	"protocol": "http",
+	"stubs": [{
+		"responses": [{
+			"is": {
+				"body": "Hello, ${city}!"
+			},
+			"_behaviors": {
+				"shellTransform": ["node ./test/shellTransform.js"]
+			}
+		}]
+	}]
+}

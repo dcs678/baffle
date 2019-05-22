@@ -1,0 +1,126 @@
+{
+	"port": 4545,
+	"protocol": "http",
+	"stubs": [{
+			"predicates": [{
+				"inject": "function (config) {return config.request.body.indexOf('mounte') === 0;    }"
+			}],
+			"responses": [{
+				"is": {
+					"statusCode": 200,
+					"headers": {
+						"Server": "Apache-Coyote/1.1",
+						"Access-Control-Allow-Origin": "*",
+						"Content-Type": "text/json;charset=UTF-8",
+						"Content-Length": 298,
+						"Date": "Tue, 05 Sep 2017 06:49:14 GMT",
+						"Connection": "close"
+					},
+					"body": {
+						"rspcode": "100",
+						"respMsg": "恭喜你，提交的数据存在mounte"
+					}
+				}
+			}]
+		},
+		{
+			"responses": [{
+				"is": {
+					"body": "Basic xpath usage"
+				}
+			}],
+			"predicates": [{
+					"equals": {
+						"body": "Harry Potter"
+					},
+					"xpath": {
+						"selector": "//title"
+					},
+					"caseSensitive": true,
+					"comment": "case sensitivity applies to the selector as well as the value"
+				},
+				{
+					"equals": {
+						"body": "POTTER"
+					},
+					"xpath": {
+						"selector": "//TITLE"
+					},
+					"except": "HARRY ",
+					"comment": "The except regular expression is removed from the value before matching"
+				},
+				{
+					"matches": {
+						"body": "^Harry"
+					},
+					"xpath": {
+						"selector": "//title"
+					}
+				},
+				{
+					"exists": {
+						"body": true
+					},
+					"xpath": {
+						"selector": "//title"
+					},
+					"comment": "body must exist (e.g. be empty) AND the xpath must match at least one node"
+				},
+				{
+					"exists": {
+						"body": false
+					},
+					"xpath": {
+						"selector": "//title/@first"
+					},
+					"comment": "body must not exist (e.g. be empty) OR the xpath must not match any nodes"
+				},
+				{
+					"equals": {
+						"body": 3
+					},
+					"xpath": {
+						"selector": "count(//title)"
+					},
+					"comment": "number results from xpath selectors are fine..."
+				},
+				{
+					"equals": {
+						"body": true
+					},
+					"xpath": {
+						"selector": "boolean(//title)"
+					},
+					"comment": "...as are boolean results"
+				}
+			]
+		},
+		{
+			"responses": [{
+				"proxy": {
+					"to": "https://www.baidu.com/",
+					"mode": "proxyTransparent"
+				}
+			}]
+		},
+		{
+			"responses": [{
+				"is": {
+					"statusCode": 400,
+					"headers": {
+						"Server": "Apache-Coyote/1.1",
+						"Access-Control-Allow-Origin": "*",
+						"Content-Type": "text/json;charset=UTF-8",
+						"Content-Length": 298,
+						"Date": "Tue, 05 Sep 2017 06:49:14 GMT",
+						"Connection": "close"
+					},
+					"body": {
+						"respMsg": "其他"
+					}
+				}
+			}]
+		}
+	]
+
+}

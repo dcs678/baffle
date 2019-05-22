@@ -1,0 +1,40 @@
+{
+	"port": 8083,
+	"protocol": "http",
+	"stubs": [{
+		"predicates": [{
+			"equals": {
+				"path": "/mockjs",
+				"method": "get"
+			}
+		}],
+		"responses": [{
+			"is": {
+				"statusCode": 200,
+				 "_proxyResponseTime": 219,
+				"headers": {
+					"Server": "Apache-Coyote/1.1",
+					"Access-Control-Allow-Origin": "*",
+					"Content-Type": "text/json;charset=UTF-8",
+					"Content-Length": 298,
+					"Date": "Tue, 05 Sep 2017 06:49:14 GMT",
+					"Connection": "close"
+				},
+				"body": {
+
+					"head": {
+						"rspcode": "200"
+					},
+					"body": {
+						"city": "序列号"
+					}
+				}
+			},
+			"_behaviors": {
+				"shellTransform": ["node ./test/mockjs.js"],
+				"decorate": "function (req, res) { res.headers = req.headers; }",
+				"wait": 290
+			}
+		}]
+	}]
+}

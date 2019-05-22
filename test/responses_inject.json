@@ -1,0 +1,9 @@
+{
+	"port": 8084,
+	"protocol": "http",
+	"stubs": [{
+		"responses": [{
+			"inject": "<%- stringify(filename, './test/responses.ejs') %>"
+			}]
+	}]
+}

@@ -1,0 +1,28 @@
+{
+	"port": 4545,
+	"protocol": "http",
+	"stubs": [
+		{
+			"predicates": [{
+				"inject": "function (config) {return config.request.body.indexOf('mounte') === 0;    }"
+			}],
+			"responses": [{
+				"is": {
+					"statusCode": 200,
+					"headers": {
+						"Server": "Apache-Coyote/1.1",
+						"Access-Control-Allow-Origin": "*",
+						"Content-Type": "text/json;charset=UTF-8",
+						"Content-Length": 298,
+						"Date": "Tue, 05 Sep 2017 06:49:14 GMT",
+						"Connection": "close"
+					},
+					"body": {
+						"rspcode": "100",
+						"respMsg": "恭喜你，提交的数据存在mounte"
+					}
+				}
+			}]
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"port": 8082,
+	"protocol": "http",
+	"stubs": [{
+			"predicates": [{
+				"deepEquals": {
+					"path": "/mockjs"
+				}
+			}],
+			"responses": [{
+				"proxy": {
+					"to": "http://localhost:8083/mockjs",
+					"mode": "proxyOnce",
+					"addWaitBehavior": true,
+					"injectHeaders": {
+						"X-My-Custom-Header-One": "my first value",
+						"X-My-Custom-Header-Two": "my second value"
+					},
+					"predicateGenerators": [{
+						"matches": {
+							"query": {
+								"q": "mountebank"
+							}
+						}
+					}],
+					"addDecorateBehavior": "<%- stringify(filename, './test/proxy.ejs') %>"
+				}
+			}]
+		}
+
+	]
+}

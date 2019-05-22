@@ -1,0 +1,24 @@
+{
+	"port": 8081,
+	"protocol": "http",
+	"stubs": [{
+		"predicates": [{
+			"equals": {
+				"body": "Harry Potter"
+			},
+			"xpath": {
+				"selector": "//title"
+			},
+			"caseSensitive": true,
+			"comment": "case sensitivity applies to the selector as well as the value"
+		}],
+		"responses": [{
+			"is": {
+				"body": {
+					"Operator": "inject"
+				}
+			}
+
+		}]
+	}]
+}
